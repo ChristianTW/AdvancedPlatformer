@@ -17,8 +17,6 @@ namespace RandularSystems.GamePlay2D
 
         public bool isAlive = true;
 
-        public int jumpCount = 2;
-
         public bool isHit = false;
 
         public string currentScene;
@@ -40,6 +38,36 @@ namespace RandularSystems.GamePlay2D
             }
             animator = gameObject.GetComponent<Animator>();
         }
+
+
+        //Jump code
+        /*
+        public void Jump ()
+        {
+            if (Input.GetButtonDown("Jump") && isTouchingGround)
+            {
+                motion.y = speed * 0.9f;
+            }
+        }
+        */
+
+
+        //On press check/ holding button check
+        // Probably gonna replace this entirely with code from video
+        public bool isHeldDown = false;
+ 
+        public void OnPress ()
+        {
+            isHeldDown = true;
+            Debug.Log(isHeldDown);
+        }
+ 
+            public void onRelease ()
+        {
+            isHeldDown = false;
+            Debug.Log(isHeldDown);
+        }
+
         void Update()
         {
             if (isAlive == false)
@@ -48,10 +76,7 @@ namespace RandularSystems.GamePlay2D
             }
             float xInput = Input.GetAxis("Horizontal");
             isTouchingGround = IsTouchingGround();
-            if (IsTouchingGround())
-            {
-                jumpCount = 1;
-            }
+            
             Vector2 motion = m_rigidbody2D.velocity;
 
             if (xInput != 0.0f)
@@ -69,15 +94,14 @@ namespace RandularSystems.GamePlay2D
                 
             }
 
-            if (Input.GetAxis("Jump") > 0.0f && isTouchingGround)
+            //Will be where I call jump
+            
+            if (Input.GetButtonDown("Jump") && isTouchingGround)
             {
                 motion.y = speed * 0.9f;
-            } 
-            else if (Input.GetKeyDown("space") && !isTouchingGround && jumpCount > 0)
-            {
-                motion.y = speed * 0.8f;
-                jumpCount = jumpCount - 1;
             }
+            
+
 
             if (animator != null)
             {
