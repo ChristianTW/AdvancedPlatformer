@@ -130,9 +130,16 @@ namespace RandularSystems.GamePlay2D
 
             //Will be where I call jump
             
+            //var jumpInputRelease = Input.GetButtonUp("Jump");
+
             if (Input.GetButtonDown("Jump") && isTouchingGround)
             {
                 motion.y = speed * 1.0f;
+            }
+
+            if (Input.GetButtonUp("Jump") && !isTouchingGround)
+            {
+                motion.y = speed * -0.1f;
             }
             
 
@@ -148,11 +155,13 @@ namespace RandularSystems.GamePlay2D
             {
                 if (motion.x > 0.01f)
                 {
-                    spriteRenderer.flipX = false;
+                    spriteRenderer.flipX = true;
+                    // Was false, new sprite is facing other way
                 }
                 if (motion.x < -0.01f)
                 {
-                    spriteRenderer.flipX = true;
+                    spriteRenderer.flipX = false;
+                    // Was true, new sprite is facing other way
                 }
             }
 
