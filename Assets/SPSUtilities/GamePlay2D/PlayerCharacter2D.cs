@@ -31,6 +31,7 @@ namespace RandularSystems.GamePlay2D
         }
 
         private Rigidbody2D m_rigidbody2D;
+        // Why is Rigidbody 2D not named?
         void Start()
         {
             m_rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
@@ -39,6 +40,8 @@ namespace RandularSystems.GamePlay2D
                 spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
             }
             animator = gameObject.GetComponent<Animator>();
+
+            //SetGravityScale(Data.gravityScale);
 
             //_rigidbody = GetComponent<Rigidbody2D>();
 
@@ -139,9 +142,15 @@ namespace RandularSystems.GamePlay2D
 
             if (Input.GetButtonUp("Jump") && !isTouchingGround)
             {
-                motion.y = speed * -0.1f;
+                motion.y = 0.0f;
             }
             
+            /*
+            if (m_rigidbody2D.velocity < 0)
+            {
+                m_rigidbody2D.gravityScale = Data.gravityScale * 1.5f;
+            }
+            */
 
 
             if (animator != null)
