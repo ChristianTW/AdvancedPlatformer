@@ -15,24 +15,36 @@ public class EnemyScript : MonoBehaviour
 
         public bool isAlive = true;
 
-        public bool isHit = false;
+        //public bool isHit = false;
 
-        public string currentScene;
+        //public string currentScene;
 
-        public bool isHurt = false;
+        //public bool isHurt = false;
 
 
-        Rigidbody2D rb;
+        private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = gameObject.GetComponent<Rigidbody2D>();
+            if(spriteRenderer == null)
+            {
+                spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+            }
+            animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //rb.velocity = transform.right * enemySpeed;
+
+        Vector2 motion = rb.velocity;
+        
+        if (isAlive == true)
+        {
+            motion.x = enemySpeed * 1.0f;
+        }
+        
     }
 }

@@ -60415,6 +60415,7 @@ GameObject:
   - component: {fileID: 973223747}
   - component: {fileID: 973223746}
   - component: {fileID: 973223750}
+  - component: {fileID: 973223751}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -60454,8 +60455,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0000024178473, y: -0.28237113}
-  m_Size: {x: 2.0165763, y: 1.420179}
+  m_Offset: {x: -0.0000024209344, y: -0.30826733}
+  m_Size: {x: 2.0165765, y: 1.3683871}
   m_Direction: 1
 --- !u!50 &973223747
 Rigidbody2D:
@@ -60565,13 +60566,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 10
-  collisionTestOffset: 0.5
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
-  isAlive: 1
-  isHit: 0
-  currentScene: 
-  isHurt: 0
+--- !u!95 &973223751
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973223745}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &981533045 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5420912173230116349, guid: 6dbefdb461db958499b68e0afef408e3, type: 3}

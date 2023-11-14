@@ -30,7 +30,7 @@ namespace RandularSystems.GamePlay2D
         }
 
         private Rigidbody2D m_rigidbody2D;
-        // Why is Rigidbody 2D not named?
+        // Why is Rigidbody 2D named M_rigidbody2D?
         void Start()
         {
             m_rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
