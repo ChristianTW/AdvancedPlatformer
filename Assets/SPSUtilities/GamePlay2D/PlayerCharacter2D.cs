@@ -9,7 +9,6 @@ namespace RandularSystems.GamePlay2D
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerCharacter2D : CharacterController2D
     {
-        //public PlayerData Data;
 
         public float speed = 10.0f;
         public float collisionTestOffset = 0.5f;
@@ -40,48 +39,17 @@ namespace RandularSystems.GamePlay2D
                 spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
             }
             animator = gameObject.GetComponent<Animator>();
-
-            //SetGravityScale(Data.gravityScale);
-
-            //_rigidbody = GetComponent<Rigidbody2D>();
-
         }
-
-
-        //Jump code?
-        /*
-        public void Jump ()
-        {
-            if (Input.GetButtonDown("Jump") && isTouchingGround)
-            {
-                motion.y = speed * 0.9f;
-            }
-        }
-        */
-
-
-        //On press check/ holding button check
-        // Probably gonna replace this entirely with code from video
-        /*
-        public bool isHeldDown = false;
- 
-        public void OnPress ()
-        {
-            isHeldDown = true;
-            Debug.Log(isHeldDown);
-        }
- 
-            public void onRelease ()
-        {
-            isHeldDown = false;
-            Debug.Log(isHeldDown);
-        }
-        */
 
         void Update()
         {
             if (isAlive == false)
             {
+                //Rect rect = new Rect();
+                /*if (GUI.Button(Rect(Screen.width*0.5-50, 200-20, 100, 40), "Respawn"))
+                {
+                    return;
+                }*/
                 return;
             }
             float xInput = Input.GetAxis("Horizontal");
@@ -104,37 +72,6 @@ namespace RandularSystems.GamePlay2D
                 
             }
 
-            //Jump Code?
-            /*
-            var inputX = Input.GetAxisRaw("Horizontal");
-            //var jumpInput = Input.GetButtonDown("Jump");
-            var jumpInputRelease = Input.GetButtonUp("Jump");
-
-            //m_rigidbody2D.velocity = new Vector2( inputX * _movementVel, m_rigidbody2D.velocity.y);
-
-            //if (jumpInput && IsTouchingGround)
-            if (Input.GetButtonDown("Jump") && isTouchingGround)
-            {
-                m_rigidbody2D.velocity = new Vector2(m_rigidbody2D.velocity.x, 8);
-                //m_rigidbody2D.velocity = new Vector2(m_rigidbody2D.velocity.x, _jumpVel);
-            }
-
-            if (jumpInputRelease && m_rigidbody2D.velocity.y > 0)
-            {
-                m_rigidbody2D.velocity = new Vector2(m_rigidbody2D.velocity.x, 0);
-            }
-
-            if (inputX != 0)
-            {
-                transform.localScale = new Vector3(Mathf.Sign(inputX), 1, 1);
-            }
-            */
-
-
-            //Will be where I call jump
-            
-            //var jumpInputRelease = Input.GetButtonUp("Jump");
-
             if (Input.GetButtonDown("Jump") && isTouchingGround)
             {
                 motion.y = speed * 1.0f;
@@ -144,13 +81,6 @@ namespace RandularSystems.GamePlay2D
             {
                 motion.y = 0.0f;
             }
-            
-            /*
-            if (m_rigidbody2D.velocity < 0)
-            {
-                m_rigidbody2D.gravityScale = Data.gravityScale * 1.5f;
-            }
-            */
 
 
             if (animator != null)
