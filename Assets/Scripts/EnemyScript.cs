@@ -4,15 +4,16 @@ using UnityEngine;
 using SuperPupSystems.Helper;
 using RandularSystems.GamePlay2D;
 
-public class EnemyScript : MonoBehaviour
+public class EnemyScript : CharacterController2D
 {
 
         public float enemySpeed = 10.0f;
-        public float distance;
 
         private bool movingRight = true;
 
-        //public Transform groundDetection;
+        public bool isHurt = false;
+
+        public bool canMove = true;
 
         public Transform wallDetection;
         
@@ -22,7 +23,6 @@ public class EnemyScript : MonoBehaviour
         public Animator animator;
 
         public bool isAlive = true;
-
 
         private Rigidbody2D rb;
 
@@ -43,37 +43,11 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector2 motion = rb.velocity;
 
-        
-        //transform.Translate(Vector2.right * enemySpeed * Time.deltaTime);
-
-        //RaycastHit2D wallInfo = Physics2D.Raycast(wallDetection.position, Vector2.right, 2f);
- 
-        /*
-        if(wallInfo.collider.tag == "Wall")
-        {
-            if(movingRight == true){
-                transform.eulerAngles = new Vector3(0, -180, 0);
-                movingRight = false;
-            } else {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-                movingRight = true;
-            }
+        if (isTouchingGround == true) {
+            transform.Translate(Vector2.right * enemySpeed * Time.deltaTime);
         }
-        */
-
-        /*
-        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
-        if(groundInfo.collider == false){
-            if(movingRight == true){
-                transform.eulerAngles = new Vector3(0, -180, 0);
-                movingRight = false;
-            } else {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-                movingRight = true;
-            }
-        }
-        */
         
         if (isAlive == false)
         {
@@ -93,6 +67,21 @@ public class EnemyScript : MonoBehaviour
                     // Was true, new sprite is facing other way
                 }
             }
+        /*
+        if (spriteRenderer != null)
+            {
+                if (motion.x > 0.01f)
+                {
+                    spriteRenderer.flipX = true;
+                    // Was false, new sprite is facing other way
+                }
+                if (motion.x < -0.01f)
+                {
+                    spriteRenderer.flipX = false;
+                    // Was true, new sprite is facing other way
+                }
+            }
+            */
         
         
     }

@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &83165843
 RectTransform:
   m_ObjectHideFlags: 0
@@ -59868,8 +59868,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.049269814, y: 0.10867537}
-  m_Size: {x: 2.0561564, y: 1.3577497}
+  m_Offset: {x: 0.049270142, y: 0.10867537}
+  m_Size: {x: 2.0561569, y: 1.3577503}
   m_Direction: 1
 --- !u!1 &367108623
 GameObject:
@@ -60041,7 +60041,7 @@ MonoBehaviour:
   currentScene: SampleScene
   isHurt: 0
   canMove: 1
-  GameOverScreen: {fileID: 0}
+  RestartThing: {fileID: 1571372201}
 --- !u!50 &367108628
 Rigidbody2D:
   serializedVersion: 4
@@ -60792,8 +60792,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: facbcb6e219a5e04e820088772e63ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundCheckPosition: {fileID: 0}
+  groundCheckSize: {x: 0.75, y: 0.2, z: 1}
+  jumpableTags: []
+  contactFilter2D:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  debugDirection: {fileID: 0}
+  rayDebug: {fileID: 0}
+  col: {fileID: 0}
+  isTouchingGround: 1
   enemySpeed: 10
-  distance: 0
+  isHurt: 0
+  canMove: 1
   wallDetection: {fileID: 1376522946}
   collisionTestOffset: 0.5
   spriteRenderer: {fileID: 0}
@@ -60974,11 +60996,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1376522946}
-  - component: {fileID: 1376522947}
   m_Layer: 0
   m_Name: WallDetection
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -60997,51 +61018,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 973223749}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1376522947
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376522945}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 1.2732782, y: 0.037278175}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.1096668, y: 0.7492218}
-  m_EdgeRadius: 0
 --- !u!1001 &1385167712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61117,7 +61093,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1571372202
 MonoBehaviour:
   m_ObjectHideFlags: 0

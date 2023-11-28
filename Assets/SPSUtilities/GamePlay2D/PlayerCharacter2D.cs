@@ -28,23 +28,14 @@ namespace RandularSystems.GamePlay2D
         public bool canMove = true;
 
 
-        
-        public GameOverScreen GameOverScreen;
-
-        /*
-        public void GameOver() {
-            GameOverScreen.Setup(isAlive == false);
-        }
-        */
+        public GameObject RestartThing;
         
         
-        
-        /*
         public void Death()
         {
-            SceneManager.LoadScene(currentScene);
+            isAlive = false;
         }
-        */
+        
 
         private Rigidbody2D m_rigidbody2D;
         // Why is Rigidbody 2D named M_rigidbody2D?
@@ -63,7 +54,9 @@ namespace RandularSystems.GamePlay2D
             
             if (isAlive == false)
             {
-                return;
+                //SceneManager.LoadScene("SampleScene");
+                canMove = false;
+                RestartThing.SetActive(true);
             }
 
             float xInput = Input.GetAxis("Horizontal");
