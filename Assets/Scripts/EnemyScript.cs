@@ -8,6 +8,14 @@ public class EnemyScript : MonoBehaviour
 {
 
         public float enemySpeed = 10.0f;
+        public float distance;
+
+        private bool movingRight = true;
+
+        //public Transform groundDetection;
+
+        public Transform wallDetection;
+        
         public float collisionTestOffset = 0.5f;
 
         public SpriteRenderer spriteRenderer;
@@ -15,16 +23,12 @@ public class EnemyScript : MonoBehaviour
 
         public bool isAlive = true;
 
-        //public bool isHit = false;
-
-        //public string currentScene;
-
-        //public bool isHurt = false;
-
 
         private Rigidbody2D rb;
 
+
     // Start is called before the first frame update
+    
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -34,17 +38,62 @@ public class EnemyScript : MonoBehaviour
             }
             animator = gameObject.GetComponent<Animator>();
     }
+    
 
     // Update is called once per frame
     void Update()
     {
 
-        Vector2 motion = rb.velocity;
         
-        if (isAlive == true)
+        //transform.Translate(Vector2.right * enemySpeed * Time.deltaTime);
+
+        //RaycastHit2D wallInfo = Physics2D.Raycast(wallDetection.position, Vector2.right, 2f);
+ 
+        /*
+        if(wallInfo.collider.tag == "Wall")
         {
-            motion.x = enemySpeed * 1.0f;
+            if(movingRight == true){
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                movingRight = false;
+            } else {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                movingRight = true;
+            }
         }
+        */
+
+        /*
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
+        if(groundInfo.collider == false){
+            if(movingRight == true){
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                movingRight = false;
+            } else {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                movingRight = true;
+            }
+        }
+        */
+        
+        if (isAlive == false)
+        {
+            enemySpeed = 0.0f;
+        }
+
+        if (spriteRenderer != null)
+            {
+                if (movingRight == true)
+                {
+                    spriteRenderer.flipX = true;
+                    // Was false, new sprite is facing other way
+                }
+                if (movingRight == false)
+                {
+                    spriteRenderer.flipX = false;
+                    // Was true, new sprite is facing other way
+                }
+            }
+        
         
     }
 }

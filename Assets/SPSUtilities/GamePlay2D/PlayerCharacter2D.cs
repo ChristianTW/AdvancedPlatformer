@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace RandularSystems.GamePlay2D
 {
@@ -24,10 +25,26 @@ namespace RandularSystems.GamePlay2D
 
         public bool isHurt = false;
 
+        public bool canMove = true;
+
+
+        
+        public GameOverScreen GameOverScreen;
+
+        /*
+        public void GameOver() {
+            GameOverScreen.Setup(isAlive == false);
+        }
+        */
+        
+        
+        
+        /*
         public void Death()
         {
             SceneManager.LoadScene(currentScene);
         }
+        */
 
         private Rigidbody2D m_rigidbody2D;
         // Why is Rigidbody 2D named M_rigidbody2D?
@@ -43,21 +60,18 @@ namespace RandularSystems.GamePlay2D
 
         void Update()
         {
+            
             if (isAlive == false)
             {
-                //Rect rect = new Rect();
-                /*if (GUI.Button(Rect(Screen.width*0.5-50, 200-20, 100, 40), "Respawn"))
-                {
-                    return;
-                }*/
                 return;
             }
+
             float xInput = Input.GetAxis("Horizontal");
             isTouchingGround = IsTouchingGround();
             
             Vector2 motion = m_rigidbody2D.velocity;
 
-            if (xInput != 0.0f)
+            if (xInput != 0.0f && canMove == true)
             {
                 if (!TestMove(Vector2.right, collisionTestOffset) && xInput > 0.0f)
                 {
