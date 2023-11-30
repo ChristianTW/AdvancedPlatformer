@@ -39,6 +39,21 @@ public class EnemyScript : CharacterController2D
             animator = gameObject.GetComponent<Animator>();
     }
     
+    /*
+    public void OnTriggerEnter2D(Collider2D ground)
+        {
+            if (movingRight == true)
+            {
+                //transform.eulerAngles = new Vector3(0, -180, 0);
+                movingRight = false;
+            }
+            else
+            {
+                //transform.eulerAngles = new Vector3(0, 0, 0);
+                movingRight = true;
+            }
+        }
+        */
 
     // Update is called once per frame
     void Update()
@@ -49,6 +64,22 @@ public class EnemyScript : CharacterController2D
             transform.Translate(Vector2.right * enemySpeed * Time.deltaTime);
         }
         
+        if (canMove == true)
+            {
+                if (!TestMove(Vector2.right, collisionTestOffset) && movingRight == true)
+                {
+                    movingRight = false;
+                } else if (!TestMove(Vector2.left, collisionTestOffset) && movingRight == false)
+                {
+                    movingRight = true;
+                }/* else
+                {
+                    motion.x = xInput * speed;
+                }
+                */
+                
+            }
+
         if (isAlive == false)
         {
             enemySpeed = 0.0f;
