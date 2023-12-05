@@ -13,7 +13,7 @@ public class SpikeScript : MonoBehaviour
         {
             if (!other.gameObject.GetComponent<PlayerCharacter2D>().isHurt)
             {
-                other.gameObject.GetComponent<PlayerHealth>().Damage(2);
+                other.gameObject.GetComponent<PlayerHealth>().Damage(20);
             }
         }
     }

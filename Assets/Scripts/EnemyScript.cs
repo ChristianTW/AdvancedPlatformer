@@ -87,6 +87,7 @@ public class EnemyScript : CharacterController2D
             }
         }
         */
+        
 
     // Update is called once per frame
     void Update()
@@ -118,6 +119,7 @@ public class EnemyScript : CharacterController2D
             enemySpeed = 0.0f;
         }
 
+        /*
         if (spriteRenderer != null)
             {
                 if (movingRight == true)
@@ -131,6 +133,7 @@ public class EnemyScript : CharacterController2D
                     // Was true, new sprite is facing other way
                 }
             }
+            */
         /*
         if (spriteRenderer != null)
             {
