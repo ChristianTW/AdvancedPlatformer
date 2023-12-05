@@ -39,17 +39,50 @@ public class EnemyScript : CharacterController2D
             animator = gameObject.GetComponent<Animator>();
     }
     
-    /*
+    
     public void OnTriggerEnter2D(Collider2D ground)
         {
             if (movingRight == true)
             {
-                //transform.eulerAngles = new Vector3(0, -180, 0);
+                transform.eulerAngles = new Vector3(0, -180, 0);
                 movingRight = false;
+                //spriteRenderer.flipX = false;
             }
             else
             {
-                //transform.eulerAngles = new Vector3(0, 0, 0);
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                movingRight = true;
+                //spriteRenderer.flipX = true;
+            }
+        }
+        
+
+        //transform.Translate(Vector2.right * enemySpeed * Time.deltaTime);
+        /*
+        RaycastHit2D wallInfo = Physics2D.Raycast(wallDetection.position, Vector2.right, 2f);
+ 
+        
+        if(wallInfo.collider.tag == "Wall")
+        {
+            if(movingRight == true){
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                movingRight = false;
+            } else {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                movingRight = true;
+            }
+        }
+        */
+        
+
+        /*
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
+        if(groundInfo.collider == false){
+            if(movingRight == true){
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                movingRight = false;
+            } else {
+                transform.eulerAngles = new Vector3(0, 0, 0);
                 movingRight = true;
             }
         }
