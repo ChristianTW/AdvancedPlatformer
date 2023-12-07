@@ -84,7 +84,7 @@ namespace RandularSystems.GamePlay2D
                 motion.y = speed * 1.0f;
             }
 
-            if (Input.GetButtonUp("Jump") && !isTouchingGround)
+            if (Input.GetButtonUp("Jump") && !isTouchingGround && motion.y > 0.0f)
             {
                 motion.y = 0.0f;
             }
